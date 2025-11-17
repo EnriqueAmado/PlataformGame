@@ -15,6 +15,14 @@ run/main_scene="uid://gam78tj2r2cw"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*res://scenes/game_manager.tscn"
+
+[global_group]
+
+Player=""
+
 [input]
 
 left={
