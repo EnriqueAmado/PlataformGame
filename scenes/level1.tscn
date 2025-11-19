@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://gam78tj2r2cw"]
+[gd_scene load_steps=18 format=4 uid="uid://gam78tj2r2cw"]
 
 [ext_resource type="PackedScene" uid="uid://crwu4n6tceux8" path="res://scenes/player.tscn" id="1_ru4tf"]
 [ext_resource type="Texture2D" uid="uid://whm1024larw8" path="res://assets/Mossy Tileset/Mossy - BackgroundDecoration.png" id="2_6sh32"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c8mf43rn3krom" path="res://assets/Mossy Tileset/Mossy - Decorations&Hazards.png" id="4_bbk5w"]
 [ext_resource type="Texture2D" uid="uid://dkuudpco7art3" path="res://assets/Mossy Tileset/Mossy - TileSet.png" id="5_conm7"]
 [ext_resource type="PackedScene" uid="uid://dk87txnq5e4en" path="res://scenes/coin.tscn" id="6_6sh32"]
+[ext_resource type="PackedScene" uid="uid://bjqy8frqokmb3" path="res://scenes/enemy.tscn" id="7_ejswk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d3jkd"]
 texture = ExtResource("2_6sh32")
@@ -378,6 +379,9 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_dxn3v")
 sources/1 = SubResource("TileSetAtlasSource_14jow")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6sh32"]
+size = Vector2(20, 23.792809)
+
 [node name="Level1" type="Node2D"]
 position = Vector2(0, -10)
 
@@ -450,3 +454,20 @@ position = Vector2(-512, -68)
 
 [node name="Coin12" parent="Coins" instance=ExtResource("6_6sh32")]
 position = Vector2(-699, -68)
+
+[node name="DeathArea" type="Area2D" parent="."]
+scale = Vector2(3619.1062, -20.006056)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathArea"]
+position = Vector2(-0.005526226, -136.20877)
+scale = Vector2(1, 1.0000001)
+shape = SubResource("RectangleShape2D_6sh32")
+
+[node name="RespawnPoint" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-3559, 36)
+
+[node name="Enemy" parent="." instance=ExtResource("7_ejswk")]
+position = Vector2(1961, -3)
+
+[connection signal="body_entered" from="DeathArea" to="Player" method="_on_death_area_body_entered"]
