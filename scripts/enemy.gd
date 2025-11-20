@@ -4,9 +4,13 @@ extends CharacterBody2D
 const SPEED = 300.0
 var movingRight = 1
 var canSwitch = true
+var start_position: Vector2
+
+func _ready() -> void:
+	start_position = global_position
+	add_to_group("enemies")
 
 func _physics_process(delta: float) -> void:
-		
 		if !$RayCast2D.is_colliding() and canSwitch:
 			movingRight *= -1
 			canSwitch = false
@@ -24,6 +28,10 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	GameManager.playSoundFx(load("res://assets/Sounds/Retro Negative Short 21.wav"))
 	if body.is_in_group('Player'):
 		body.KillPlayer()
+		
+func reset() -> void:
+	global_position = start_position
+	show()
+		

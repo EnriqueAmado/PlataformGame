@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="PlataformGame"
-run/main_scene="uid://gam78tj2r2cw"
+run/main_scene="uid://cl2g1vf00kwuc"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameManager="*res://scenes/game_manager.tscn"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [global_group]
 

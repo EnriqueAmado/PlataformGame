@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=4 uid="uid://gam78tj2r2cw"]
+[gd_scene load_steps=19 format=4 uid="uid://gam78tj2r2cw"]
 
+[ext_resource type="Script" uid="uid://xjxm2sgxj33q" path="res://scripts/level_1.gd" id="1_bbk5w"]
 [ext_resource type="PackedScene" uid="uid://crwu4n6tceux8" path="res://scenes/player.tscn" id="1_ru4tf"]
 [ext_resource type="Texture2D" uid="uid://whm1024larw8" path="res://assets/Mossy Tileset/Mossy - BackgroundDecoration.png" id="2_6sh32"]
 [ext_resource type="Texture2D" uid="uid://nc7w5s2dbsgu" path="res://assets/Mossy Tileset/Mossy - Hanging Plants.png" id="3_ejswk"]
@@ -384,6 +385,7 @@ size = Vector2(20, 23.792809)
 
 [node name="Level1" type="Node2D"]
 position = Vector2(0, -10)
+script = ExtResource("1_bbk5w")
 
 [node name="Tilemaps" type="Node" parent="."]
 
@@ -406,7 +408,7 @@ tile_map_data = PackedByteArray("AAD3/wAAAAAAAAAAAAD3/wEAAAAAAAEAAAD3/wIAAAAAAAI
 tile_set = SubResource("TileSet_mvsps")
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("1_ru4tf")]
-position = Vector2(-4038, -4)
+position = Vector2(-3571, -8)
 
 [node name="Coins" type="Node" parent="."]
 

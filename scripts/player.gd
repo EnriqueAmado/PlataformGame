@@ -54,7 +54,11 @@ func _physics_process(delta: float) -> void:
 func KillPlayer():
 		position = %RespawnPoint.position
 		$AnimatedSprite2D.flip_h = false
+		GameManager.playSoundFx(load("res://assets/Sounds/Retro Negative Short 21.wav"))
+		GameManager.reset_level()
+		get_tree().reload_current_scene()
 
 func _on_death_area_body_entered(body: Node2D) -> void:
 	KillPlayer()
 	GameManager.playSoundFx(load("res://assets/Sounds/Retro Negative Short 23.wav"))
+	
