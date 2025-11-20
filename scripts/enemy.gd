@@ -24,5 +24,6 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	GameManager.playSoundFx(load("res://assets/Sounds/Retro Negative Short 21.wav"))
 	if body.is_in_group('Player'):
 		body.KillPlayer()

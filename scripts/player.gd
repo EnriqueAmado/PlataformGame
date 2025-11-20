@@ -4,7 +4,6 @@ extends CharacterBody2D
 const SPEED = 600.0
 const JUMP_VELOCITY = -1500.0
 
-
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -13,12 +12,13 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-
+		GameManager.playSoundFx(load("res://assets/Sounds/Retro Jump Simple C2 02.wav"))
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var run_multiplier = 1
 	
 	if Input.is_action_pressed("run"):
+		
 		run_multiplier = 1.75
 	else:
 		run_multiplier = 1
@@ -40,7 +40,6 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play("idle")
 		
 	move_and_slide()
-	
 	if Input.is_action_just_pressed('Magic'):
 		var magicNode = load("res://scenes/magic_area.tscn")
 		var newMagic = magicNode.instantiate()
@@ -50,6 +49,7 @@ func _physics_process(delta: float) -> void:
 			newMagic.direction = 1
 		newMagic.set_position(%MagicSpawnPoint.global_transform.origin)
 		get_parent().add_child(newMagic)
+		GameManager.playSoundFx(load("res://assets/Sounds/Retro Magic Protection 01.wav"))
 	
 func KillPlayer():
 		position = %RespawnPoint.position
@@ -57,3 +57,4 @@ func KillPlayer():
 
 func _on_death_area_body_entered(body: Node2D) -> void:
 	KillPlayer()
+	GameManager.playSoundFx(load("res://assets/Sounds/Retro Negative Short 23.wav"))

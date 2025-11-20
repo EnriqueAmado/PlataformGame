@@ -26,6 +26,7 @@ func _on_timer_timeout():
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Enemy"):
+		GameManager.playSoundFx(load("res://assets/Sounds/Retro Swooosh 07.wav"))
 		GameManager.score += 500
 		area.get_parent().queue_free()
 		queue_free()
