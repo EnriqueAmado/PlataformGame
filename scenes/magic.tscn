@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3736yrx7jn0f"]
+
+[sub_resource type="Gradient" id="Gradient_oitf5"]
+offsets = PackedFloat32Array(0, 0.1574074, 0.28703704)
+colors = PackedColorArray(0, 0, 0, 1, 0.046296295, 0.046296295, 0.046296295, 1, 1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_ghace"]
+
+[node name="Magic" type="Node2D"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 2000
+lifetime = 0.3
+speed_scale = 0.35
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 82.77
+spread = 40.0
+gravity = Vector2(-3520, 0)
+angular_velocity_min = -520.0
+angular_velocity_max = 560.0
+linear_accel_max = 60.0
+scale_amount_min = 0.0
+scale_amount_max = 9.0
+color = Color(0.62451416, 0.048952125, 0.032477062, 0.9372549)
+color_ramp = SubResource("Gradient_oitf5")
+color_initial_ramp = SubResource("Gradient_ghace")
+anim_speed_min = 32.0
+anim_speed_max = 46.22
+anim_offset_max = 0.2639
