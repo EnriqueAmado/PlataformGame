@@ -9,6 +9,7 @@ colors = PackedColorArray(0, 0, 0, 1, 0.046296295, 0.046296295, 0.046296295, 1, 
 [node name="Magic" type="Node2D"]
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-2, -99)
 amount = 2000
 lifetime = 0.3
 speed_scale = 0.35

@@ -4,6 +4,9 @@ extends CharacterBody2D
 const SPEED = 600.0
 const JUMP_VELOCITY = -1500.0
 
+var can_attack: bool = true
+@export var attack_cooldown: float = 7
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -41,15 +44,28 @@ func _physics_process(delta: float) -> void:
 		
 	move_and_slide()
 	if Input.is_action_just_pressed('Magic'):
-		var magicNode = load("res://scenes/magic_area.tscn")
-		var newMagic = magicNode.instantiate()
-		if $AnimatedSprite2D.flip_h == false:
-			newMagic.direction = -1
-		else:
-			newMagic.direction = 1
-		newMagic.set_position(%MagicSpawnPoint.global_transform.origin)
-		get_parent().add_child(newMagic)
-		GameManager.playSoundFx(load("res://assets/Sounds/Retro Magic Protection 01.wav"))
+		attack_magic()
+func attack_magic():
+	if not can_attack:
+		return
+	can_attack = false
+		
+	var magicNode = load("res://scenes/magic_area.tscn")
+	var newMagic = magicNode.instantiate()
+		
+	if $AnimatedSprite2D.flip_h == false:
+		newMagic.direction = -1
+	else:
+		newMagic.direction = 1
+		
+	newMagic.set_position(%MagicSpawnPoint.global_transform.origin)
+	
+	get_parent().add_child(newMagic)
+	
+	GameManager.playSoundFx(load("res://assets/Sounds/Retro Magic Protection 01.wav"))
+		
+	await get_tree().create_timer(attack_cooldown).timeout
+	can_attack = true
 	
 func KillPlayer():
 		position = %RespawnPoint.position
@@ -61,4 +77,16 @@ func KillPlayer():
 func _on_death_area_body_entered(body: Node2D) -> void:
 	KillPlayer()
 	GameManager.playSoundFx(load("res://assets/Sounds/Retro Negative Short 23.wav"))
+	
+func _process(delta):
+	# Supongamos que quieres usar la tecla F5 para guardar
+	if Input.is_action_just_pressed("save_game"):
+		save_current_game()
+
+func save_current_game():
+	var current_level_node = get_tree().current_scene
+	var current_level = current_level_node.level_path
+	GameManager.save_game(global_position, current_level)
+	print("Partida guardada!")
+
 	

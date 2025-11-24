@@ -2,12 +2,15 @@
 
 [ext_resource type="Script" uid="uid://dvbvrebjeomf5" path="res://scripts/main_menu.gd" id="1_l6cm7"]
 
-[node name="MainMenu" type="Node2D"]
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_l6cm7")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 342.0
 offset_top = 91.0
 offset_right = 767.0
@@ -16,6 +19,7 @@ theme_override_font_sizes/font_size = 60
 text = "Wicked Wizard"
 
 [node name="Button" type="Button" parent="."]
+layout_mode = 0
 offset_left = 416.0
 offset_top = 228.0
 offset_right = 695.0
@@ -23,7 +27,8 @@ offset_bottom = 291.0
 theme_override_font_sizes/font_size = 40
 text = "Play Game"
 
-[node name="Button2" type="Button" parent="."]
+[node name="LoadButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 416.0
 offset_top = 317.0
 offset_right = 696.0
@@ -31,7 +36,8 @@ offset_bottom = 384.0
 theme_override_font_sizes/font_size = 40
 text = "Load Game"
 
-[node name="Button3" type="Button" parent="."]
+[node name="NewGame" type="Button" parent="."]
+layout_mode = 0
 offset_left = 416.0
 offset_top = 409.0
 offset_right = 695.0
@@ -40,5 +46,3 @@ theme_override_font_sizes/font_size = 40
 text = "New Game"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
