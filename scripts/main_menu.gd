@@ -46,6 +46,6 @@ func _on_LoadButton_pressed() -> void:
 func _on_SaveButton_pressed() -> void:
 	# Obtén la posición del jugador y el nivel actual
 	var player = get_tree().current_scene.get_node("Player")
-	var current_level = get_tree().current_scene.filename
+	var current_level = get_tree().current_scene.scene_file_path
 	
 	GameManager.save_game(player.global_position, current_level)

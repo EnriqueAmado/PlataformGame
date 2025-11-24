@@ -84,9 +84,14 @@ func _process(delta):
 		save_current_game()
 
 func save_current_game():
-	var current_level_node = get_tree().current_scene
-	var current_level = current_level_node.level_path
+	var current_level = get_tree().current_scene.scene_file_path
 	GameManager.save_game(global_position, current_level)
 	print("Partida guardada!")
+	
+func game_over():
+	ScoreAPI.send_score("Player", GameManager.score)
+	
+func show_scoreboard():
+	ScoreAPI.get_scores()
 
 	

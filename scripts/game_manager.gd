@@ -17,6 +17,18 @@ func reset_level():
 		if e.has_method("reset"):
 			e.reset()
 
+func continue_game():
+	var data = load_game()
+	if data == null:
+		return
+	
+	get_tree().change_scene_to_file(data["level"])
+	
+	await get_tree().process_frame
+	
+	var player = get_tree().current_scene.get_node("Player")
+	player.global_position = data["position"]
+	
 # Botón "Continuar"
 func _on_ContinueButton_pressed():
 	GameManager.continue_game()
