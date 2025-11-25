@@ -1,0 +1,7 @@
+MOVIMIENTOS
+A/Flecha hacia la derecha = Moverse hacia la derecha
+D/Flecha hacia la izquierda = Moverse hacia la izquierda
+W/Espacio = Saltar
+E/Click izquierdo = disparar
+Shift = Sprint
+F5 = Guardar partida
